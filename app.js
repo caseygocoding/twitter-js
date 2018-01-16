@@ -1,5 +1,7 @@
 const express = require("express");
+const morgan = require('morgan');
 const nunjucks = require("nunjucks");
+var tweetBank = require('./tweetBank')
 const app = express();
 
 // app.use("/special/*", function (req, res, next) {
@@ -14,6 +16,9 @@ const app = express();
 
 // app.get("/", (req, res) => res.send("Hello World!"));
 // app.get("/news", (req, res) => res.send("News Site"));
+
+// to post in server: curl -X POST localhost:3000/modernism
+// app.post("/", (req, res) => res.send("modernism"));
 
 app.set('view engine', 'html'); // have res.render work with html files
 app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
@@ -38,7 +43,5 @@ app.get('/', function(req, res) {
     res.send(output);
   });
 });
-// to post in server: curl -X POST localhost:3000/modernism
-// app.post("/", (req, res) => res.send("modernism"));
 
-app.listen(3000, () => console.log("Example app listening on port 3000"));
+app.listen(3000, () => console.log("Put your next input"));
