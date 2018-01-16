@@ -1,8 +1,10 @@
 const express = require("express");
-const morgan = require('morgan');
+// const morgan = require('morgan');
 const nunjucks = require("nunjucks");
 var tweetBank = require('./tweetBank')
 const app = express();
+const routes = require('./routes');
+app.use('/', routes);
 
 // app.use("/special/*", function (req, res, next) {
 //   console.log("you reached the special area");
@@ -38,10 +40,10 @@ var locals = {
     ]
 };
 
-app.get('/', function(req, res) {
-  res.render('index.html', locals, function(err, output) {
-    res.send(output);
-  });
-});
+// app.get('/', function(req, res) {
+//   res.render('index.html', locals, function(err, output) {
+//     res.send(output);
+//   });
+// });
 
 app.listen(3000, () => console.log("Put your next input"));
